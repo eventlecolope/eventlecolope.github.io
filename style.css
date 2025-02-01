@@ -3,17 +3,17 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000; /* Fond noir */
+    background-color: #1c1c1c;
     color: #fff;
 }
 
 /* Header */
 header {
-    background-color: #000; /* Bandeau noir */
-    color: #fff;
-    text-align: center;
+    background-color: #ff6347;
+    color: white;
     padding: 20px;
-    border-bottom: 2px solid #fff; /* Ligne blanche sous le header */
+    text-align: center;
+    border-bottom: 2px solid #fff;
 }
 
 header h1 {
@@ -50,69 +50,149 @@ header nav ul li a:hover {
     margin: 20px;
 }
 
-/* Ranking Section */
-.ranking {
-    padding: 20px;
-    margin: 30px;
+/* Task Section */
+#task-list {
     background-color: #111;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    padding: 20px;
     border-radius: 10px;
+    margin: 20px;
 }
 
-.ranking h3 {
-    text-align: center;
-    font-size: 2rem;
+.participant-tasks {
     margin-bottom: 20px;
 }
 
-.ranking table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
+.tasks-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-.ranking th, .ranking td {
-    padding: 10px;
-    border-bottom: 1px solid #444;
-}
-
-.ranking th {
+.task-item {
     background-color: #333;
-    color: #fff;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    color: #ddd;
+    transition: transform 0.3s;
 }
 
-.ranking td {
-    background-color: #222;
-    color: #fff;
-}
-
-.ranking tr:hover {
+.task-item:hover {
+    transform: scale(1.05);
     background-color: #444;
 }
 
-/* Avatar */
-.avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
+button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.ranking td a {
-    display: flex;
-    align-items: center;
-    color: #fff;
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
-/* Footer */
-footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: 30px;
-}
-
-footer p {
+/* Admin Panel */
+#admin-login button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
     font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#admin-login button:hover {
+    background-color: #0056b3;
+}
+
+#admin-panel {
+    display: none;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#admin-panel h2 {
+    text-align: center;
+}
+
+.admin-item {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.admin-item button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-item button:hover {
+    background-color: #c82333;
+}
+
+/* Table Section */
+#leaderboard {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#leaderboard th, #leaderboard td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+#leaderboard tr:nth-child(even) {
+    background-color: #333;
+}
+
+#leaderboard tr:nth-child(odd) {
+    background-color: #444;
+}
+
+/* Countdown Timer */
+#countdown {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #ff6347;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 10px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
 }

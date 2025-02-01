@@ -3,102 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LECOLOPE CHAMPIONSHIP</title>
-    <link rel="stylesheet" href="style.css">
+    <title>🏆 LECOLOPE CHAMPIONSHIP 🏆</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+        }
+
+        #leaderboard {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #leaderboard th, #leaderboard td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #leaderboard th {
+            background-color: #333;
+        }
+
+        .avatar {
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+        }
+
+        #task-list {
+            margin-top: 20px;
+        }
+
+        .task-item {
+            margin-bottom: 10px;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .task-item button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .task-item button:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+
+        #admin-panel {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #reset-scores-btn {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #reset-scores-btn:disabled {
+            background-color: gray;
+        }
+
+        #countdown {
+            font-size: 20px;
+            margin-bottom: 20px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #admin-panel button {
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #admin-panel button:hover {
+            background-color: #666;
+        }
+
+        #admin-btn {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        #admin-btn:hover {
+            background-color: #666;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Header avec le titre et le bouton pour ouvrir le panneau admin -->
     <header>
         <h1>🏆 LECOLOPE CHAMPIONSHIP 🏆</h1>
-        <nav>
-            <ul>
-                <li><a href="https://discord.gg/rs4zDy2PhN" target="_blank">Rejoindre le Discord</a></li>
-                <li><a href="https://youtube.com/LecolopeMP4" target="_blank">Chaîne YouTube</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="https://discord.gg/rs4zDy2PhN" target="_blank">Rejoindre le Discord</a></li>
+                    <li><a href="https://youtube.com/LecolopeMP4" target="_blank">Chaîne YouTube</a></li>
+                </ul>
+            </nav>
+        <button id="admin-btn" onclick="loginAsAdmin()">Admin Panel</button>
     </header>
 
-    <section id="timer">
-        <h2 id="countdown">Chargement du timer...</h2>
-    </section>
+    <!-- Affichage du compte à rebours -->
+    <div id="countdown"></div>
 
-    <section class="ranking">
-        <h3>Classement actuel</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Position</th>
-                    <th>Nom</th>
-                    <th>Points</th>
-                    <th>Profil Discord</th>
-                </tr>
-            </thead>
-            <tbody id="leaderboard">
-                <!-- Le tableau sera rempli via JavaScript -->
-            </tbody>
-        </table>
-    </section>
+    <!-- Tableau du classement -->
+    <h2>Classement</h2>
+    <table id="leaderboard">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Participant</th>
+                <th>Points</th>
+                <th>Profil</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
-    <footer>
-        <p>Rejoins la compétition sur le serveur Discord de Lecolope et n'oublie pas de t'abonner à sa chaîne YouTube !</p>
-    </footer>
+    <!-- Liste des tâches -->
+    <h2>Tâches à accomplir</h2>
+    <div id="task-list"></div>
 
-    <script>
-        // Exemple de données pour les participants et leurs points
-        const participants = [
-            { name: '🎯MrTraxy🎮', points: 0, discordId: '1078363268185346100', avatar: 'd74f819866fcc276979d97dc77651e10' },
-            { name: 'Predator 🗿', points: 0, discordId: '1282764464822685707', avatar: '2c89ec4bc293e1e5b0ec14cbabcece2a' },
-            { name: '🕶 AMZ Astrasec', points: 0, discordId: '829653469886414868', avatar: '0e3106976755d83d7990ddb7acf664b3' },
-            { name: 'LeLe', points: 0, discordId: '1249271545025663099', avatar: 'ccb631dcbb19cd537764543858f191c9' },
-        ];
+    <!-- Panneau Admin -->
+    <div id="admin-panel">
+        <button onclick="loginAsAdmin()">Se connecter en tant qu'admin</button>
+        <button id="reset-scores-btn" disabled>Réinitialiser les scores</button>
+    </div>
 
-        // Fonction pour afficher le classement
-        function displayLeaderboard() {
-            const leaderboard = document.getElementById('leaderboard');
-            leaderboard.innerHTML = '';
+    <script src="app.js"></script>
 
-            participants.forEach((participant, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>
-                        <a href="https://discord.com/users/${participant.discordId}" target="_blank">
-                            <img src="https://cdn.discordapp.com/avatars/${participant.discordId}/${participant.avatar}.webp?size=64" alt="Avatar de ${participant.name}" class="avatar">
-                            ${participant.name}
-                        </a>
-                    </td>
-                    <td>${participant.points}</td>
-                    <td>
-                        <a href="https://discord.com/users/${participant.discordId}" target="_blank">Voir Profil</a>
-                    </td>
-                `;
-                leaderboard.appendChild(row);
-            });
-        }
-
-        // Fonction pour mettre à jour le compte à rebours
-        function updateCountdown() {
-            const now = new Date();
-            const targetTime = new Date();
-            targetTime.setHours(21, 0, 0, 0);
-            
-            if (now >= targetTime) {
-                document.getElementById('countdown').innerText = "Le challenge a commencé !";
-                return;
-            }
-
-            const diff = targetTime - now;
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown').innerText = `Début du challenge dans : ${hours}h ${minutes}m ${seconds}s`;
-        }
-
-        setInterval(updateCountdown, 1000);
-        window.onload = function() {
-            displayLeaderboard();
-            updateCountdown();
-        };
-    </script>
 </body>
 </html>
