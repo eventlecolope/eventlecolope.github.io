@@ -19,7 +19,7 @@ function displayLeaderboard() {
             <td>${index + 1}</td>
             <td>
                 <a href="https://discord.com/users/${participant.discordId}" target="_blank">
-                    <img src="https://cdn.discordapp.com/avatars/${participant.discordId}/${participant.avatar}.webp?size=128" alt="Avatar de ${participant.name}" class="avatar">
+                    <img src="https://cdn.discordapp.com/avatars/${participant.discordId}/${participant.avatar}.webp?size=64" alt="Avatar de ${participant.name}" class="avatar">
                     ${participant.name}
                 </a>
             </td>
