@@ -152,20 +152,37 @@ function updateCountdown() {
         return;
     }
 
-    const diff = targetTime - now;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    countdown.innerText = `Fin du challenge dans : ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    function updateCountdown() {
+        const countdown = document.getElementById('countdown');
+        if (!countdown) return;
+        
+        const now = new Date();
+        
+        // Définir la date cible, qui est 7 jours à partir de maintenant
+        const targetTime = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000); // 7 jours en millisecondes
+        
+        const diff = targetTime - now;
+        
+        // Calculer le nombre de jours restants
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+        countdown.innerText = `Fin du challenge dans : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+    
+        // Si le temps est écoulé, afficher un message
+        if (diff <= 0) {
+            countdown.innerText = "Le challenge est terminé !";
+        }
+    }
+    
+    // Mettre à jour les affichages au chargement de la page
+    window.onload = function() {
+        displayLeaderboard();
+        displayTasks();
+        updateCountdown();
+        toggleAdminPanel();
+        setInterval(updateCountdown, 1000); // Mettre à jour le timer chaque seconde
+    };
 }
-
-// Mettre à jour les affichages au chargement de la page
-window.onload = function() {
-    displayLeaderboard();
-    displayTasks();
-    updateCountdown();
-    toggleAdminPanel();
-    setInterval(updateCountdown, 1000); // Mettre à jour le timer chaque seconde
-};
