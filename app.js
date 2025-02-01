@@ -153,11 +153,12 @@ function updateCountdown() {
     }
 
     const diff = targetTime - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 60));
     const hours = Math.floor(diff / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    countdown.innerText = `Fin du challenge dans : ${hours}h ${minutes}m ${seconds}s`;
+    countdown.innerText = `Fin du challenge dans : ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
 // Mettre à jour les affichages au chargement de la page
