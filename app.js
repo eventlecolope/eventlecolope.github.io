@@ -148,7 +148,7 @@ function updateCountdown() {
     targetTime.days(7, 0, 0, 0);
     
     if (now >= targetTime) {
-        countdown.innerText = "Le challenge a commencé !";
+        countdown.innerText = "Challenge | SEM.1 Finit";
         return;
     }
 
@@ -157,7 +157,7 @@ function updateCountdown() {
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    countdown.innerText = `Début du challenge dans : ${hours}h ${minutes}m ${seconds}s`;
+    countdown.innerText = `Fin du challenge dans : ${hours}h ${minutes}m ${seconds}s`;
 }
 
 // Mettre à jour les affichages au chargement de la page
