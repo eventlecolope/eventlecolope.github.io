@@ -145,7 +145,7 @@ function updateCountdown() {
     
     const now = new Date();
     const targetTime = new Date();
-    targetTime.setHours(21, 0, 0, 0);
+    targetTime.days(7, 0, 0, 0);
     
     if (now >= targetTime) {
         countdown.innerText = "Le challenge a commencé !";
