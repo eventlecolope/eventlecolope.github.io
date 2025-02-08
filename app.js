@@ -8,7 +8,7 @@ const data = {
     ],
     "tasks": [
         { "description": "✅ Faire un kill avec chaque rareté d'arme en une seule game", "points": 15 },
-        { "description": "✅ Poster un screenshot du plus beau skin combo": 10 },
+        { "description": "✅ Poster un screenshot du plus beau skin combo", "points": 10 },
         { "description": "✅ Survivre 5 minutes sans tirer une seule balle (+10 points)", "points": 10 },
         { "description": "✅ Gagner une game en restant full camouflage (bush, ombre, etc.)", "points": 20 }
     ]
