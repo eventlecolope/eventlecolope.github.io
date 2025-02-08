@@ -7,10 +7,10 @@ const data = {
         { name: 'LeLe', points: 0, discordId: '1249271545025663099', avatar: 'ccb631dcbb19cd537764543858f191c9', tasksCompleted: [] },
     ],
     "tasks": [
-        { "description": "✅ Faire un kill avec chaque rareté d'arme en une seule game", "points": 15 },
-        { "description": "✅ Poster un screenshot du plus beau skin combo", "points": 10 },
-        { "description": "✅ Survivre 5 minutes sans tirer une seule balle (+10 points)", "points": 10 },
-        { "description": "✅ Gagner une game en restant full camouflage (bush, ombre, etc.)", "points": 20 }
+        { "description": "Faire un kill avec chaque rareté d'arme en une seule game", "points": 15 },
+        { "description": "Poster un screenshot du plus beau skin combo", "points": 10 },
+        { "description": "Survivre 5 minutes sans tirer une seule balle (+10 points)", "points": 10 },
+        { "description": "Gagner une game en restant full camouflage (bush, ombre, etc.)", "points": 20 }
     ]
 };
 
